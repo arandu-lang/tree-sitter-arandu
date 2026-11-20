@@ -1,0 +1,42 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "arandu",
+      "camelcase": "Arandu",
+      "title": "Arandu",
+      "scope": "source.arandu",
+      "file-types": [
+        "aru"
+      ],
+      "injection-regex": "^(arandu|aru)$",
+      "highlights": "queries/highlights.scm",
+      "locals": "queries/locals.scm",
+      "folds": "queries/folds.scm",
+      "indents": "queries/indents.scm"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Tree-sitter grammar for the Arandu programming language",
+    "authors": [
+      {
+        "name": "Arandu Lang",
+        "url": "https://github.com/arandu-lang"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/arandu-lang/tree-sitter-arandu"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": true,
+    "python": false,
+    "rust": true,
+    "swift": false,
+    "zig": false
+  }
+}

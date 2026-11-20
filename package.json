@@ -1,0 +1,36 @@
+{
+  "name": "tree-sitter-arandu",
+  "version": "0.1.0",
+  "description": "Tree-sitter grammar for the Arandu programming language (.aru)",
+  "keywords": [
+    "incremental",
+    "parsing",
+    "tree-sitter",
+    "arandu"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arandu-lang/tree-sitter-arandu.git"
+  },
+  "license": "MIT",
+  "main": "bindings/node",
+  "scripts": {
+    "generate": "tree-sitter generate",
+    "test": "tree-sitter test",
+    "build": "tree-sitter build"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.27.2"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.arandu",
+      "file-types": [
+        "aru"
+      ],
+      "highlights": [
+        "queries/highlights.scm"
+      ]
+    }
+  ]
+}

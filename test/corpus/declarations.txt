@@ -1,0 +1,126 @@
+==================
+Module and imports
+==================
+
+module app.main
+
+import std.alloc.vec as vec
+from std.core.option import { Option, Some as S }
+public use std.core.mem.{ sizeOf, alignOf }
+
+---
+
+(source_file
+  (module_declaration
+    path: (module_path
+      (identifier)
+      (identifier)))
+  (import_declaration
+    source: (module_path
+      (identifier)
+      (identifier)
+      (identifier))
+    alias: (identifier))
+  (from_import_declaration
+    source: (module_path
+      (identifier)
+      (identifier)
+      (identifier))
+    (import_item
+      name: (type_identifier))
+    (import_item
+      name: (type_identifier)
+      alias: (type_identifier)))
+  (use_declaration
+    (visibility)
+    path: (module_path
+      (identifier)
+      (identifier)
+      (identifier))
+    (import_item
+      name: (identifier))
+    (import_item
+      name: (identifier))))
+
+==================
+Struct, enum and function
+==================
+
+@Derive(Debug)
+public struct Point<T> {
+    x: T
+    y: T = 0
+}
+
+public enum Poll<T> {
+    Ready(T)
+    Pending
+}
+
+public func Point.distance(self: ref Point<f64>): f64 {
+    return self.x + self.y
+}
+
+---
+
+(source_file
+  (struct_declaration
+    (attribute
+      name: (type_identifier)
+      (argument_list
+        (argument
+          (type_identifier))))
+    (visibility)
+    name: (type_identifier)
+    (generic_parameters
+      (generic_parameter
+        name: (type_identifier)))
+    body: (struct_body
+      (field_declaration
+        name: (identifier)
+        type: (type_name
+          (type_identifier)))
+      (field_declaration
+        name: (identifier)
+        type: (type_name
+          (type_identifier))
+        default: (integer_literal))))
+  (enum_declaration
+    (visibility)
+    name: (type_identifier)
+    (generic_parameters
+      (generic_parameter
+        name: (type_identifier)))
+    body: (enum_body
+      (enum_variant
+        name: (type_identifier)
+        (type_name
+          (type_identifier)))
+      (enum_variant
+        name: (type_identifier))))
+  (function_declaration
+    (visibility)
+    receiver: (type_name
+      (type_identifier))
+    name: (identifier)
+    parameters: (parameter_list
+      (parameter
+        (self_parameter
+          (reference_type
+            (generic_type
+              (type_name
+                (type_identifier))
+              (generic_arguments
+                (generic_argument
+                  (primitive_type))))))))
+    return_type: (result_type
+      (primitive_type))
+    body: (block
+      (return_statement
+        (binary_expression
+          left: (field_expression
+            value: (self_expression)
+            field: (identifier))
+          right: (field_expression
+            value: (self_expression)
+            field: (identifier)))))))

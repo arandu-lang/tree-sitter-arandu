@@ -1,0 +1,66 @@
+==================
+Control flow and match
+==================
+
+func classify(x: int): str {
+    let mut acc = 0
+    for i in 0..x {
+        acc += i
+    }
+    match acc {
+        0 => return "zero"
+        1..=10 => return "small"
+        _ => return "many"
+    }
+}
+
+---
+
+(source_file
+  (function_declaration
+    name: (identifier)
+    parameters: (parameter_list
+      (parameter
+        (regular_parameter
+          name: (identifier)
+          type: (primitive_type))))
+    return_type: (result_type
+      (primitive_type))
+    body: (block
+      (let_statement
+        (binding_item
+          name: (identifier))
+        value: (integer_literal))
+      (for_statement
+        (for_clause
+          (for_binding
+            name: (identifier))
+          iterable: (binary_expression
+            left: (integer_literal)
+            right: (identifier)))
+        body: (block
+          (assignment_statement
+            (identifier)
+            (identifier))))
+      (expression_statement
+        (match_statement
+          value: (identifier)
+          (match_arm
+            pattern: (pattern
+              (pattern_alt
+                (integer_literal)))
+            body: (return_statement
+              (string_literal)))
+          (match_arm
+            pattern: (pattern
+              (pattern_alt
+                (range_pattern
+                  (integer_literal)
+                  (integer_literal))))
+            body: (return_statement
+              (string_literal)))
+          (match_arm
+            pattern: (pattern
+              (pattern_alt))
+            body: (return_statement
+              (string_literal))))))))
